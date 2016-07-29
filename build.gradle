@@ -1,0 +1,61 @@
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+version = '0.1'
+
+task init {
+    def libs = new File('lib')
+    def res = new File('res')
+    def src = new File('src')
+    def test = new File('test')
+    def testres = new File('test-res')
+    def log = new File('log')
+    if (!libs.exists()) libs.mkdir()
+    if (!res.exists()) res.mkdir()
+    if (!src.exists()) src.mkdir()
+    if (!test.exists()) test.mkdir()
+    if (!testres.exists()) testres.mkdir()
+}
+
+task wrapper(type : Wrapper) {
+    gradleVersion = '2.13'
+    scriptFile = 'sgradle'
+    jarFile = 'gradle-bin'
+    distributionUrl = 'file:///D:/rj/Gradle/gradle-2.13-all.zip'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main'
+        }
+        resources {
+            srcDir 'res'
+        }
+    }
+
+    test {
+        java {
+            srcDir 'test'
+        }
+        resources {
+            srcDir 'test-res'
+        }
+    }
+}
+
+repositories {
+    //TODO getValues gradle repos
+    flatDir {
+        dirs './lib'
+        name 'localLibs'
+    }
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.10'
+}
+
+compileJava {
+    project.sourceCompatibility = JavaVersion.VERSION_1_8
+}

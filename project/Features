@@ -1,0 +1,33 @@
+Version Z:
+2. All resources are paths to file from url, uris.
+
+Version Y:
+1. Resource writing to stream.
+1. ExternalResource is now a ConcurrentList and renamed ResourceList.
+2. ResourceLocatorSyntax ->
+        "C:/base/"
+        "C:/base/file.txt"
+        "C:/base/base2/*"
+        "C:/base/**" which means include all files only and include all files, subdirectories and subfiles resp.
+        "http://www.res.com/image.png"
+        "base-base2-*"
+2. A location can represent another key.toString() from the same list.
+3. Optimize utility class. 'u.java'
+4. File writing Security bypassing
+5. Log location should be the same place as the RMConfig file.
+6. RMConfig does not contain log's location.
+7. New methods, moveResource(), copyResource()
+9. generateResources also copies file/folders from other locations.
+10. generate now works with only given user parameters
+10. sorting, searching by tag
+11. open abstract stream to a file.
+12. automatically sorts by tag as per adding of item.
+
+Version X:
+8. Thread safe. Concurrent Retrieval.
+1.  open urlStream, uriStream, binaryStream or abstractStream.
+2. plugins implementer.
+3. ResourceLocatorSyntax supports URI.
+4. Unix system based RLS.
+5. Key generation convention can be switched.
+6. RLS has its subtypes classes File, files, directory ... etc
